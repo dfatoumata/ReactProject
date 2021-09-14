@@ -266,5 +266,3 @@ const add2 = curriedAdd(2)
 
 add3(9) // 12
 
-
-export default Inscription;
