@@ -7,12 +7,47 @@ import {
   TextInput,
   View,
 } from 'react-native'
-
+import { auth } from "../firebase";
 
 const Connexion = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [sending, setSending] = useState(false)
+
+useEffect(() => {
+  if (sending === false) return;
+
+  // On vide le message de success
+  setSuccessMessage("");
+  // On vide le message d'erreur
+  setErrorMessage("");
+
+  const authenticate = async () => {
+    try {
+      const userCredential = await auth.signInWithEmailAndPassword(
+        email,
+        password
+      );
+
+      setSuccessMessage(`Bienvenue ${userCredential.user.email} :)`);
+
+      setTimeout(() => {
+        setIsConnected(true);
+      }, 1000);
+    } catch (e) {
+      setErrorMessage(e.message);
+    }
+
+    setSending(false);
+  };
+
+  authenticate();
+}, [sending]);
+
+// ACTIONS
+const onPress = () => {
+  setSending(true);
+};
 
   return (
  
