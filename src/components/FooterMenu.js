@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
+import { Button } from "react-native-elements";
 import { Link } from "react-router-native";
 
 const FooterMenu = () => {
@@ -35,7 +36,23 @@ const FooterMenu = () => {
           source={require("../../assets/profil.svg")}
         />
       </Link>
+      <Link to="/inscription">
+        <Image
+          style={stylesMenu.Image}
+          source={require("../../assets/favicon.png")}
+        />
+
+      </Link>
+
+      <Link to="/favorisSuppression">
+      <Image
+          style={stylesMenu.Image}
+          source={require("../../assets/icon.png")}
+          />
+      </Link>
+
     </View>
+    
   );
 };
 

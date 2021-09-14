@@ -70,6 +70,7 @@ const Connexion = () => {
 };
 
 export default Connexion;
+
 const styles = StyleSheet.create({
   container: {
     width: 375,

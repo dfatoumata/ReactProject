@@ -5,7 +5,8 @@ import FooterMenu from "./src/components/FooterMenu";
 import Accueil from "./src/pages/Accueil";
 import { NativeRouter, Route } from "react-router-native";
 import Connexion from "./src/pages/Connexion"
-//import Inscription from "./src/pages/Inscription"
+import FavorisSuppression from "./src/pages/FavorisSuppression"
+import Inscription from "./src/pages/Inscription"
 
 export default function App() {
   return (
@@ -17,10 +18,13 @@ export default function App() {
         <Route exact path="/connexion">
           <Connexion />
         </Route>
+        <Route exact path="/FavorisSuppression">
+          <FavorisSuppression />
+        </Route>
         
-        {/* <Route exact path="/inscription">
+        <Route exact path="/inscription">
           <Inscription />
-        </Route> */}
+        </Route>
         
         <FooterMenu />
        
