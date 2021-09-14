@@ -8,17 +8,36 @@ import {
 
 const image = {uri:'../../assets//salade-caesar.jpeg'}; 
 
+const onPressOui = () => { }; 
+
+const onPressNon = () => { }; 
+
 const FavorisSuppression = () => {
+
   return (
    
     <View style = {styles.container}>
       <ImageBackground source={image} style={styles.imageB} resizeMode="cover" />
+      <View>
       <Text style = {styles.textTitle}>Êtes vous sur de vouloir supprimer cette recette de vos favoris </Text>
       <Text style = {styles.textContent}> Poulet sauce moutarde </Text> 
       {/* ajouter code pour text content  */}
 
-      <Button style = {styles.buttonOui}> Oui</Button>
-      <Button style = {styles.buttonNon}> Non</Button>
+      <Button 
+      color = '#C55252' 
+      style = {styles.buttonOui}
+      title = "Oui" 
+      onPress={onPressOui}> 
+      </Button>
+      <Button 
+      color = '#688649' 
+      style = {styles.buttonNon}
+      title = "Non" 
+      onPress={onPressNon}> 
+      </Button>
+      
+
+      </View>
       
     </View>
     
@@ -43,7 +62,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   buttonOui: {
-    color: '#C55252',
+    
     fontSize: 16,
     textColor: 'white',
     fontWeight: 'bold',
@@ -53,7 +72,7 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonNon: {
-    color: '#688649',
+    
     fontSize: 16,
     textColor: 'white',
     fontWeight: 'bold',
