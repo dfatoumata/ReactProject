@@ -2,10 +2,11 @@ import React from 'react'
 
 function Accueil() {
   return (
-    <div>
-      
-    </div>
-  )
-}
+
+    <View>
+      <Text>Accueil</Text>
+    </View>
+  );
+};
 
 export default Accueil
