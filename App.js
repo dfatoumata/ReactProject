@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import FooterMenu from "./src/components/FooterMenu";
-import Accueil from "./src/pages/Accueil";
+import Recette from "./src/pages/recettes/Recette";
 import { NativeRouter, Route } from "react-router-native";
 
 export default function App() {
@@ -10,7 +10,8 @@ export default function App() {
     <NativeRouter>
       <View>
         <Route exact path="/">
-          <Accueil />
+          <Recette />
+          
         </Route>
         <Route exact path="/">
           <FooterMenu></FooterMenu>
