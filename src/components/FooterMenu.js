@@ -29,7 +29,7 @@ const FooterMenu = () => {
           source={require("../../assets/favoris.svg")}
         />
       </Link>
-      <Link to="/">
+      <Link to="/connexion">
         <Image
           style={stylesMenu.Image}
           source={require("../../assets/profil.svg")}
@@ -42,14 +42,13 @@ const FooterMenu = () => {
 export default FooterMenu;
 const stylesMenu = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: "row",
-    width: 375,
-    height: 100,
-    left: 0,
-    right: 0,
-    top: 597,
+    position: 'fixed',
     bottom: 0,
+    flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: "row",
+    width: '100%',
+    minHeight: 100,
     backgroundColor: "#EBEAEB",
     backdropFilter: blur(4),
     /* Note: backdrop-filter has minimal browser support */
