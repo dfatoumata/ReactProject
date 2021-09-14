@@ -1,13 +1,11 @@
-import React from "react";
-import { Text, View } from "react-native";
+import React from 'react'
 
-const Accueil = () => {
+function Accueil() {
   return (
-    <View>
-      Accueil
-      <Text>Accueil</Text>
-    </View>
-  );
-};
+    <div>
+      
+    </div>
+  )
+}
 
-export default Accueil;
+export default Accueil
