@@ -4,18 +4,22 @@ import { StyleSheet, Text, View } from "react-native";
 import FooterMenu from "./src/components/FooterMenu";
 import Accueil from "./src/pages/Accueil";
 import { NativeRouter, Route } from "react-router-native";
+import Connexion from "./src/pages/Connexion"
 
 export default function App() {
   return (
     <NativeRouter>
-      <View>
+    
         <Route exact path="/">
           <Accueil />
         </Route>
-        <Route exact path="/">
-          <FooterMenu></FooterMenu>
+        <Route exact path="/connexion">
+          <Connexion />
         </Route>
-      </View>
+        
+        <FooterMenu />
+       
+      
     </NativeRouter>
   );
 }
