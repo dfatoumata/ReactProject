@@ -2,6 +2,7 @@ import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { Link } from "react-router-native";
 
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Accueil from "../pages/Accueil";
 import Inscription from "../pages/Inscription";
@@ -15,6 +16,7 @@ import FavorisSvg from "../../assets/favoris";
 import ProfilSvg from "../../assets/profil";
 const Tab = createBottomTabNavigator();
 import Svg, { Path } from "react-native-svg";
+
 import Svg, { Path } from "react-native-svg";
 import Recette from "../pages/Recette";
 
@@ -23,7 +25,6 @@ const FooterMenu = () => {
    Tab = createBottomTabNavigator();
 
   return (
-
     <Tab.Navigator
       initialRouteName="Accueil"
       screenOptions={{
@@ -37,6 +38,7 @@ const FooterMenu = () => {
         name="Accueil"
 
         component={Recette}
+
         options={{
           tabBarLabel: "",
           tabBarIcon: ({ color }) => (
@@ -102,33 +104,25 @@ const FooterMenu = () => {
 export default FooterMenu;
 const stylesMenu = StyleSheet.create({
   container: {
-    position: 'fixed',
-    bottom: 0,
+    position: "fixed",
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     flexDirection: "row",
-    width: '100%',
-    minHeight: 100,
+    width: "100%",
+    minHeight: 60,
     backgroundColor: "#EBEAEB",
+    alignSelf: "center",
     backdropFilter: blur(4),
     /* Note: backdrop-filter has minimal browser support */
   },
 
   Image: {
-    width: 44,
-    height: 45,
-    left: 13,
-    top: 12,
-    margin: 15,
-    fontFamily: "Awesome",
-    fontStyle: "normal",
-    fontWeight: 900,
-    fontSize: 30,
-    lineHeight: 34,
-
+    minWidth: 40,
+    minHeight: 50,
+    // lineHeight: 34,
+    alignSelf: "center",
     alignItems: "center",
     textAlign: "center",
-
     color: "#70716F",
   },
 });

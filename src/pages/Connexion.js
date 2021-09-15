@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext } from "react";
 import {
   ActivityIndicator,
   Button,
@@ -6,62 +6,60 @@ import {
   Text,
   TextInput,
   View,
-} from 'react-native'
-import { auth } from "../firebase";
+} from "react-native";
+import { Redirect } from "react-router-native";
+import auth from "../components/firebase";
+import { IsConnectedContext } from "../components/IsConnectedContext";
 
 const Connexion = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [sending, setSending] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [sending, setSending] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [isConnected, setIsConnected] = useContext(IsConnectedContext);
 
-useEffect(() => {
-  if (sending === false) return;
+  useEffect(() => {
+    if (sending === false) return;
+    setSuccessMessage("");
+    setErrorMessage("");
 
-  // On vide le message de success
-  setSuccessMessage("");
-  // On vide le message d'erreur
-  setErrorMessage("");
+    const authenticate = async () => {
+      try {
+        const userCredential = await auth.signInWithEmailAndPassword(
+          email,
+          password
+        );
 
-  const authenticate = async () => {
-    try {
-      const userCredential = await auth.signInWithEmailAndPassword(
-        email,
-        password
-      );
+        setSuccessMessage(`Bienvenue ${userCredential.user.email} :)`);
 
-      setSuccessMessage(`Bienvenue ${userCredential.user.email} :)`);
+        setTimeout(() => {
+          setIsConnected(true);
+        }, 1000);
+      } catch (e) {
+        setErrorMessage(e.message);
+      }
 
-      setTimeout(() => {
-        setIsConnected(true);
-      }, 1000);
-    } catch (e) {
-      setErrorMessage(e.message);
-    }
+      setSending(false);
+    };
 
-    setSending(false);
+    authenticate();
+  }, [sending]);
+
+  // ACTIONS
+  const onPress = () => {
+    setSending(true);
   };
-
-  authenticate();
-}, [sending]);
-
-// ACTIONS
-const onPress = () => {
-  setSending(true);
-};
-
+ if (isConnected) return <Redirect to="/bienvenue" />;
   return (
- 
-    
     <View style={styles.container}>
-     
-       <Text>Connexion</Text>
+      <Text>Connexion</Text>
       <View>
         <Text>Email :</Text>
         <TextInput
           value={email}
           onChangeText={setEmail}
           style={styles.textInput}
-          
         />
       </View>
       <View>
@@ -72,58 +70,52 @@ const onPress = () => {
           style={styles.textInput}
         />
       </View>
-      
-   
-    
     </View>
   );
 };
 
 export default Connexion;
 const styles = StyleSheet.create({
-container:{
-  width: 375,
-  height: 349,
-  left: 0,
-  top: 159,
-  
-  backdropFilter: blur(4),
-  
-   
+  container: {
+    width: 375,
+    height: 349,
+    left: 0,
+    top: 159,
+
+    backdropFilter: blur(4),
   },
-  Image:{
+  Image: {
     flex: 1,
     justifyContent: "center",
-    opacity : '0,15',
+    opacity: "0,15",
   },
 
   textInput: {
-    backgroundColor: 'white',
-    color: 'black',
+    backgroundColor: "white",
+    color: "black",
     margin: 5,
     padding: 15,
   },
   button: {
-    color: 'white',
+    color: "white",
     fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
     padding: 15,
     marginTop: 8,
     marginBottom: 10,
   },
 
   success: {
-    textAlign: 'center',
-    color: 'green',
+    textAlign: "center",
+    color: "green",
     fontSize: 15,
-    fontWeight: 'bold',
-    },
+    fontWeight: "bold",
+  },
   error: {
-    textAlign: 'center',
-    color: 'red',
+    textAlign: "center",
+    color: "red",
     fontSize: 15,
-    fontWeight: 'bold',
-    },
- 
+    fontWeight: "bold",
+  },
 });

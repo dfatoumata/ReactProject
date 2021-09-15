@@ -12,10 +12,7 @@ const Recette = () => {
       const snapshot = await db.collection("cooks").get();
 
 
-
-
-      const receivedRecettes = await snapshot.docs.map((document) => {
-
+      const receivedRecettes = snapshot.docs.map((document) => {
         return {
           ...document.data(),
           id: document.id,
@@ -23,9 +20,10 @@ const Recette = () => {
       });
       setRecettes(receivedRecettes);
 
+
       console.log(receivedRecettes);
 
-    };
+   };
 
     // j'appel la fonction asynchrone
     fetchRecettes();
