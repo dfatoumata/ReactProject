@@ -158,45 +158,47 @@ export default () => {
     })
 
   return (
+    <View>
     <View style={styles.container}>
-    <ImageBackground source={image} style={styles.imageB} resizeMode="cover" />
-      <View>
-        <Text style={styles.textLabel}>Email :</Text>
-        {!!emailField.error && (
-          <Text style={styles.error}>{emailField.error}</Text>
-        )}
-        <TextInput
-          value={emailField.value}
-          style={styles.textInput}
-          // onChangeText :: String -> Void
-          onChangeText={changeField(setEmailField)} />
-      </View>
-      <View>
-        <Text style={styles.textLabel}>Mot de passe :</Text>
-        {!!passwordField.error && (
-          <Text style={styles.error}>{passwordField.error}</Text>
-        )}
-        <TextInput
-          value={passwordField.value}
-          style={styles.textInput}
-          onChangeText={changeField(setPasswordField)} />
-      </View>
-      <View>
-        <Text style={styles.textLabel}>Confirmation du mot de passe :</Text>
-        {!!confirmPasswordField.error && (
-          <Text style={styles.error}>{confirmPasswordField.error}</Text>
-        )}
-        <TextInput
-          value={confirmPasswordField.value}
-          style={styles.textInput}
-          onChangeText={changeField(setConfirmPasswordField)} />
-      </View>
-      {step === SENDING_STEPS.NONE ? (
-        <SubmitButton formError={formError} setStep={setStep} />
-      ) : (
-        <Loading step={step} />
-      )}
-    </View>
+<ImageBackground source={image} style={styles.imageB} resizeMode="cover" />
+<View>
+ <Text style={styles.textLabel}>Email :</Text>
+ {!!emailField.error && (
+   <Text style={styles.error}>{emailField.error}</Text>
+ )}
+ <TextInput
+   value={emailField.value}
+   style={styles.textInput}
+   // onChangeText :: String -> Void
+   onChangeText={changeField(setEmailField)} />
+</View>
+<View>
+ <Text style={styles.textLabel}>Mot de passe :</Text>
+ {!!passwordField.error && (
+   <Text style={styles.error}>{passwordField.error}</Text>
+ )}
+ <TextInput
+   value={passwordField.value}
+   style={styles.textInput}
+   onChangeText={changeField(setPasswordField)} />
+</View>
+<View>
+ <Text style={styles.textLabel}>Confirmation du mot de passe :</Text>
+ {!!confirmPasswordField.error && (
+   <Text style={styles.error}>{confirmPasswordField.error}</Text>
+ )}
+ <TextInput
+   value={confirmPasswordField.value}
+   style={styles.textInput}
+   onChangeText={changeField(setConfirmPasswordField)} />
+</View>
+{step === SENDING_STEPS.NONE ? (
+ <SubmitButton formError={formError} setStep={setStep} />
+) : (
+ <Loading step={step} />
+)}
+</View> 
+ </View>
   )
 }
 
@@ -204,7 +206,7 @@ const SubmitButton = ({ formError, setStep }) => (
   <View style={styles.button}>
     {!!formError && <Text style={styles.error}>{formError}</Text>}
     <Button 
-     color = '#688649'
+     color = 'white'
       style={styles.button}
       title="S'inscrire"
       onPress={() => {
@@ -222,6 +224,7 @@ const Loading = ({ step }) => (
         ? 'Validation des données ...'
         : "Envoie des données dans l'espace ..."}
     </Text>
+    
   </View>
 )
 
@@ -233,20 +236,25 @@ export const styles = StyleSheet.create({
   textInput: {
     backgroundColor: 'white',
     color: 'black',
-    marginLeft: 5,
+    marginLeft: 15,
+    marginRight: 15,
     padding: 15,
+    marginBottom: 0,
+    
   },
   textLabel: {
     color: 'black',
     fontWeight: 'bold',
-    marginLeft: 5,
+    marginLeft: 15,
+    marginRight: 15,    
     padding: 15,
   },
   button: {
-    color: 'white',
+    textColor: 'gray',
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+    margin: 20,
     padding: 15,
     marginTop: 8,
     marginBottom: 10,

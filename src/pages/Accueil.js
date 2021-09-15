@@ -12,7 +12,9 @@ export default function Accueil() {
         title = "Inscription"
         color = '#688649' 
         onPress = {onPress}
-      ></Button>
+      >
+        
+      </Button>
     </View>
   );
 };

@@ -8,12 +8,14 @@ export default Bienvenue = () => {
     <View >
       <ImageBackground source={image} style={styles.imageB} resizeMode="cover" />
       <Text>Bienvenue</Text>
+      <Image source = '../../assets/favicon.png'/>
     </View>
   );
 };
 
 export const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backGroundColor: '#EBEAEB', 
 
   },
