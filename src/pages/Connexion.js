@@ -1,5 +1,8 @@
+ 
 import color from "color";
-import React, {  useState } from "react";
+
+import React, { useEffect, useState, useContext } from "react";
+
 import {
   ImageBackground,
  
@@ -10,17 +13,60 @@ import {
   View,
 } from "react-native";
 
+import { Redirect } from "react-router-native";
+import auth from "../components/firebase";
+import { IsConnectedContext } from "../components/IsConnectedContext";
+
 
 const Connexion = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   
   const image = {
     uri: "https://images-ext-2.discordapp.net/external/M4LzcSUMkf-LCEG4JW30_2IjFIXpga_ro16h08QT2ns/%3Falt%3Dmedia%26token%3Dd179cdf9-3ea0-4798-8314-96afa54968bb/https/firebasestorage.googleapis.com/v0/b/cookthat-8cd9b.appspot.com/o/PouletSauceMoutarde.jpg",
   };
 
+  const [sending, setSending] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [isConnected, setIsConnected] = useContext(IsConnectedContext);
+
+  useEffect(() => {
+    if (sending === false) return;
+    setSuccessMessage("");
+    setErrorMessage("");
+
+    const authenticate = async () => {
+      try {
+        const userCredential = await auth.signInWithEmailAndPassword(
+          email,
+          password
+        );
+
+        setSuccessMessage(`Bienvenue ${userCredential.user.email} :)`);
+
+        setTimeout(() => {
+          setIsConnected(true);
+        }, 1000);
+      } catch (e) {
+        setErrorMessage(e.message);
+      }
+
+      setSending(false);
+    };
+
+    authenticate();
+  }, [sending]);
+
+  // ACTIONS
+  const onPress = () => {
+    setSending(true);
+  };
+ if (isConnected) return <Redirect to="/bienvenue" />;
   return (
     <View style={styles.container}>
+
       <ImageBackground
         style={styles.ImageBackground}
         source={image}
@@ -53,6 +99,7 @@ const Connexion = () => {
           </View>
       </View>
       </ImageBackground>
+
     </View>
   );
 };
@@ -77,7 +124,15 @@ const styles = StyleSheet.create({
   },
   ImageBackground: {
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
+
+    backdropFilter: blur(4),
+  },
+  Image: {
+    flex: 1,
+    justifyContent: "center",
+    opacity: "0,15",
+
   },
 
   text: {
@@ -91,10 +146,11 @@ const styles = StyleSheet.create({
     margin: '5%',
   },
   textInput: {
+
     margin: '5%',
     backgroundColor: 'white',
     color: 'black',
-    padding: 15
+    padding: 15,
   },
 
   button: {
@@ -106,18 +162,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   
     padding: 15
-    
   },
 
   success: {
-    textAlign: 'center',
-    color: 'green',
+    textAlign: "center",
+    color: "green",
     fontSize: 15,
+
     fontWeight: 'bold'
+
   },
   error: {
-    textAlign: 'center',
-    color: 'red',
+    textAlign: "center",
+    color: "red",
     fontSize: 15,
     fontWeight: 'bold'
   },
