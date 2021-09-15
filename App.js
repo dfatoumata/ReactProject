@@ -5,6 +5,7 @@ import FooterMenu from "./src/components/FooterMenu";
 import Accueil from "./src/pages/Accueil";
 import { NativeRouter, Route } from "react-router-native";
 import Connexion from "./src/pages/Connexion"
+import Profil from "./src/pages/Profil"
 
 export default function App() {
   return (
@@ -15,6 +16,9 @@ export default function App() {
         </Route>
         <Route exact path="/connexion">
           <Connexion />
+          </Route>
+          <Route exact path="/profil">
+          <Profil />
         </Route>
         
         <FooterMenu />
