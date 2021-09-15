@@ -7,12 +7,17 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { Redirect } from "react-router-native";
 import auth from "../components/firebase";
+import { IsConnectedContext } from "../components/IsConnectedContext";
 
 const Connexion = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [sending, setSending] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [isConnected, setIsConnected] = useContext(IsConnectedContext);
 
   useEffect(() => {
     if (sending === false) return;
@@ -45,7 +50,7 @@ const Connexion = () => {
   const onPress = () => {
     setSending(true);
   };
-
+ if (isConnected) return <Redirect to="/bienvenue" />;
   return (
     <View style={styles.container}>
       <Text>Connexion</Text>

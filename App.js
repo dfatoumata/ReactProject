@@ -4,22 +4,19 @@ import { StyleSheet, Text, View } from "react-native";
 import FooterMenu from "./src/components/FooterMenu";
 import Accueil from "./src/pages/Accueil";
 import { NativeRouter, Route } from "react-router-native";
-import Connexion from "./src/pages/Connexion"
+import Connexion from "./src/pages/Connexion";
+import { NavigationContainer } from "@react-navigation/native";
+import AjouterRecette from "./src/pages/AjouterRecette";
+import Inscription from "./src/pages/Inscription";
+import Favoris from "./src/pages/Favoris";
+import Profil from "./src/pages/Profil";
 
 export default function App() {
   return (
     <NativeRouter>
-    
-        <Route exact path="/">
-          <Accueil />
-        </Route>
-        <Route exact path="/connexion">
-          <Connexion />
-        </Route>
-        
+      <NavigationContainer>
         <FooterMenu />
-       
-      
+      </NavigationContainer>
     </NativeRouter>
   );
 }
