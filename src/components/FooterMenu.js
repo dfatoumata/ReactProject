@@ -1,6 +1,8 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { Link } from "react-router-native";
+
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Accueil from "../pages/Accueil";
 import Inscription from "../pages/Inscription";
@@ -14,7 +16,14 @@ import FavorisSvg from "../../assets/favoris";
 import ProfilSvg from "../../assets/profil";
 const Tab = createBottomTabNavigator();
 import Svg, { Path } from "react-native-svg";
+
+import Svg, { Path } from "react-native-svg";
+import Recette from "../pages/Recette";
+
+
 const FooterMenu = () => {
+   Tab = createBottomTabNavigator();
+
   return (
     <Tab.Navigator
       initialRouteName="Accueil"
@@ -27,7 +36,9 @@ const FooterMenu = () => {
     >
       <Tab.Screen
         name="Accueil"
-        component={Accueil}
+
+        component={Recette}
+
         options={{
           tabBarLabel: "",
           tabBarIcon: ({ color }) => (
@@ -86,6 +97,7 @@ const FooterMenu = () => {
         }}
       />
     </Tab.Navigator>
+
   );
 };
 

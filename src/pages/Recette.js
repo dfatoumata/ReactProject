@@ -1,4 +1,7 @@
+
 import React from "react";
+
+import React, {useState,useEffect} from "react";
 import { Text, View } from "react-native";
 import { db } from "../components/firebase";
 
@@ -8,6 +11,7 @@ const Recette = () => {
     const fetchRecettes = async () => {
       const snapshot = await db.collection("cooks").get();
 
+
       const receivedRecettes = snapshot.docs.map((document) => {
         return {
           ...document.data(),
@@ -15,7 +19,11 @@ const Recette = () => {
         };
       });
       setRecettes(receivedRecettes);
-    };
+
+
+      console.log(receivedRecettes);
+
+   };
 
     // j'appel la fonction asynchrone
     fetchRecettes();
