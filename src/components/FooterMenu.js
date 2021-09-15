@@ -16,13 +16,11 @@ import FavorisSvg from "../../assets/favoris";
 import ProfilSvg from "../../assets/profil";
 const Tab = createBottomTabNavigator();
 import Svg, { Path } from "react-native-svg";
-
-import Svg, { Path } from "react-native-svg";
 import Recette from "../pages/Recette";
 
 
 const FooterMenu = () => {
-   Tab = createBottomTabNavigator();
+  const Tab = createBottomTabNavigator();
 
   return (
     <Tab.Navigator

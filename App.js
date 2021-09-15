@@ -14,19 +14,9 @@ import Profil from "./src/pages/Profil";
 export default function App() {
   return (
     <NativeRouter>
-<<<<<<< HEAD
-    
-        <Route exact path="/">
-          <Recette />
-          
-        </Route>
-        <Route exact path="/connexion">
-          <Connexion />
-        </Route>
-        
-=======
+
       <NavigationContainer>
->>>>>>> 2b1f1882b5875d7cd901ac79aa3e8db9d0afda8d
+
         <FooterMenu />
       </NavigationContainer>
     </NativeRouter>
