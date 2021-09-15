@@ -44,11 +44,10 @@ const stylesMenu = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    width: 375,
-    height: 100,
-    left: 0,
-    right: 0,
-    top: 597,
+    width: "100%",
+  minHeight:70,
+   position:"fixed",
+   
     bottom: 0,
     backgroundColor: "#EBEAEB",
     backdropFilter: blur(4),

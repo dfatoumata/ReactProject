@@ -4,14 +4,14 @@ import { StyleSheet, Text, View } from "react-native";
 import FooterMenu from "./src/components/FooterMenu";
 import Accueil from "./src/pages/Accueil";
 import { NativeRouter, Route } from "react-router-native";
-import NomRecette from "./src/components/NomRecette";
+import AjouterRecette from "./src/pages/AjouterRecette";
 
 export default function App() {
   return (
     <NativeRouter>
-      <View>
+      <View style={{flex:1}}>
         <Route exact path="/">
-          <NomRecette/>
+          <AjouterRecette/>
         </Route>
         <Route exact path="/">
           <FooterMenu></FooterMenu>
